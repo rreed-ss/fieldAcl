@@ -1,4 +1,5 @@
-Currently, only  laravel 5+ is supported, so still no lumen :/
+## Laravel ACL on field level
+Currently, only  laravel 5+ is supported, so still no lumen 😌
 
 ### How to use the package: 
 
