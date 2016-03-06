@@ -1,0 +1,22 @@
+{
+  "name": "neposoft/field-acl",
+  "description": "A laravel package to support acl on fields of your models",
+  "type": "library",
+  "require": {
+    "php": ">=5.4.0",
+    "illuminate/support": "5.0.x|5.1.x|5.2.x"
+  },
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Vijay Sapkota",
+      "email": "bvsapkota@hotmail.com"
+    }
+  ],
+  "autoload": {
+    "psr-0": {
+      "Neposoft\\FieldAcl": "src/"
+    }
+  },
+  "minimum-stability": "dev"
+}
