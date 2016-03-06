@@ -23,7 +23,8 @@ class FieldAclServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__ . '/views' => base_path('resources/views/fieldAcl'),
             __DIR__ . '/fieldAclConfig.php' => base_path('config/fieldAcl.php'),
-            __DIR__ . '/create_acl_fields_permissions_table.php' => base_path('database/migrations/create_acl_fields_permissions_table.php')
+            __DIR__ . '/create_acl_fields_permissions_table.php' => base_path('database/migrations/create_acl_fields_permissions_table.php'),
+            __DIR__ . '/fieldAclConfig.php' => base_path('config/fieldAcl.php')
         ]);
 
         $this->mergeConfigFrom(__DIR__ . '/fieldAclConfig.php', 'fieldAcl');
