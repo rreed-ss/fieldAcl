@@ -74,14 +74,15 @@ class FieldAclController extends Controller
     {
         \DB::transaction(function () use (&$request) {
             Permission::query()->delete();
-
             $data = $request->get('data');
             foreach ($data as $d) {
                 Permission::create($d)->save();
             }
-            //  Permission::saveMany($request->get('data'));
         });
         \Session::flash('acl-status', "Successully updated permissions");
+
+
+
         return redirect()->back();
     }
 

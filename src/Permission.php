@@ -7,4 +7,10 @@ class Permission extends Model
     protected $table = 'fieldacl_permissions';
 
     public $timestamps = false;
+
+    public static $unguarded = true;
+
+    public $casts = [
+        'hidden_fields' => 'array'
+    ];
 }

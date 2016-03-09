@@ -1,9 +1,22 @@
-@extends('layouts.master')
+<html>
+<head>
+    <title>Neposoft Field Acl : Laravel</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+          integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 
-@section('content')
-    <div class="container">
-        <h1>Manage permissions</h1>
-        {!! Form::open(['id'=>'fieldAclForm']) !!}
+    <script src="https://code.jquery.com/jquery-1.12.1.min.js"></script>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
+            integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
+            crossorigin="anonymous"></script>
+</head>
+<body>
+<div class="">
+    <h1>Manage permissions</h1>
+    <form id="fieldAclForm" method="post">
+        <input type="hidden" name="_token" value="{{ csrf_token() }}">
         <table class="table table-bordered">
             <tr>
                 <th>Permissions
@@ -28,10 +41,23 @@
 
                                 <tr>
                                     <td>{{$role}}</td>
-                                    @foreach($cdata['fields'] as $field)
-                                        {!! Form::input('hidden','data['.$rowIdx.'][model]',$class) !!}
-                                        {!! Form::input('hidden','data['.$rowIdx.'][role]',$role) !!}
-                                        <td>{!! Form::checkbox('data['.$rowIdx.'][hidden_fields][]',$field,old('data['.$rowIdx.'][hidden_fields]['.$field.']') !=null) !!}</td>
+                                    @foreach($cdata['fields'] as $fidx=> $field)
+                                        <td>
+                                            <input type="hidden" name="{{ 'data['.$rowIdx.'][model]' }}"
+                                                   value="{{$class}}">
+                                            <input type="hidden" name="{{ 'data['.$rowIdx.'][role]' }}"
+                                                   value="{{$role}}">
+                                            <?php $isfound = false;
+                                            $arr = old("data.$rowIdx.hidden_fields", []);
+                                            foreach ($arr as $v) {
+                                                if ($v == $field) {
+                                                    $isfound = true;
+                                                    continue;
+                                                }
+                                            }
+                                            ?>
+                                            <input type="checkbox" name="{{ 'data['.$rowIdx.'][hidden_fields][]' }}"
+                                                   value="{{$field}}" @if($isfound) checked @endif>
                                     @endforeach
                                     <?php $rowIdx++ ?>
                                 </tr>
@@ -44,20 +70,21 @@
                 <td><input type="submit" class="btn btn-success btn-lg" value="Save Permissions"></td>
             </tr>
         </table>
-        {!! Form::close() !!}
-    </div>
-    <script>
-        var toggleCheckbox = function () {
-            $("#fieldAclForm").find('input[type=checkbox]').each(function (idx, e) {
-                var elem = $(e);
-                elem.prop('checked', !elem.prop('checked'));
-            });
-        }
-        var checkAll = function () {
-            $("#fieldAclForm").find('input[type=checkbox]').prop('checked', true);
-        }
-        var unCheckAll = function () {
-            $("#fieldAclForm").find('input[type=checkbox]').prop('checked', false);
-        }
-    </script>
-@stop
+    </form>
+</div>
+<script>
+    var toggleCheckbox = function () {
+        $("#fieldAclForm").find('input[type=checkbox]').each(function (idx, e) {
+            var elem = $(e);
+            elem.prop('checked', !elem.prop('checked'));
+        });
+    }
+    var checkAll = function () {
+        $("#fieldAclForm").find('input[type=checkbox]').prop('checked', true);
+    }
+    var unCheckAll = function () {
+        $("#fieldAclForm").find('input[type=checkbox]').prop('checked', false);
+    }
+</script>
+</body>
+</html>
