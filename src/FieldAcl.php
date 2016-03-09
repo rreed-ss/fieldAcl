@@ -15,7 +15,7 @@ trait FieldAcl
 
     public function getHidden()
     {
-        $role = static::$aclUserRole ? static::$aclUserRole : \Request::user()->{\Config::get('fieldAcl.role_column', 'role')};
+        $role = static::$aclUserRole ? static::$aclUserRole : 'public';
         $hidden = static::getHiddenFields(get_class($this), $role);
         if ($hidden) {
             $this->setHidden($hidden);

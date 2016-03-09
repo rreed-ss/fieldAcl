@@ -49,12 +49,13 @@
                                                    value="{{$role}}">
                                             <?php $isfound = false;
                                             $arr = old("data.$rowIdx.hidden_fields", []);
-                                            foreach ($arr as $v) {
-                                                if ($v == $field) {
-                                                    $isfound = true;
-                                                    continue;
+                                            if ($arr)
+                                                foreach ($arr as $v) {
+                                                    if ($v == $field) {
+                                                        $isfound = true;
+                                                        continue;
+                                                    }
                                                 }
-                                            }
                                             ?>
                                             <input type="checkbox" name="{{ 'data['.$rowIdx.'][hidden_fields][]' }}"
                                                    value="{{$field}}" @if($isfound) checked @endif>
