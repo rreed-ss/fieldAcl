@@ -15,7 +15,7 @@
   ],
   "autoload": {
     "psr-4": {
-      "Neposoft\\FieldAcl": "src/"
+      "Neposoft\\FieldAcl\\": "src/"
     }
   },
   "minimum-stability": "dev"
