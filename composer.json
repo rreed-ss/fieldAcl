@@ -1,5 +1,5 @@
 {
-  "name": "neposoft/field-acl",
+  "name": "rreed-ss/field-acl",
   "description": "A laravel package to support acl on fields of your models",
   "type": "library",
   "require": {
