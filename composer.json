@@ -17,6 +17,5 @@
     "psr-4": {
       "Neposoft\\FieldAcl\\": "src/"
     }
-  },
-  "minimum-stability": "dev"
+  }
 }
