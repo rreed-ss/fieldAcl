@@ -17,11 +17,5 @@
     "psr-4": {
       "Neposoft\\FieldAcl\\": "src/"
     }
-  },
-  "repositories": [
-    {
-      "type": "vcs",
-      "url": "https://github.com/rreed-ss/field-acl"
-    }
-  ],
+  }
 }
